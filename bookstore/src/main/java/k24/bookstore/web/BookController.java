@@ -59,4 +59,10 @@ public class BookController {
         return "redirect:/booklist";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editBook(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("editBook", repository.findById(id));
+        return "editBook";
+    }
+
 }
