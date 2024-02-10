@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Index Page</title>
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-</head>
-<body>
-    <h1>Welcome to the Bookstore!</h1>
-    <p>This is the index page of the Bookstore project.</p>
-    <a href="/booklist">Show all books</a>
-</body>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/bootstrap.min.css"
+      th:href="@{/css/bootstrap.min.css}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to the Bookstore!</h1>
+      <p>This is the index page of the Bookstore project.</p>
+      <a href="/booklist">Show all books</a>
+    </div>
+  </body>
 </html>
