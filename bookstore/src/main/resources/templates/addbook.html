@@ -1,49 +1,62 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<title>Add Book</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Add Book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
+
 <body>
     <div class="container">
-	<h1>Add Book</h1>
-        <form action="#" th:object="${book}" th:action="@{/addbook}"
-        method="post">
-        <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Title</label>
-            <div class="col-sm-10">
-            <input class="form-control" type="text" th:field="*{title}" />
-        </div>
+        <h1>Add Book</h1>
+        <form action="#" th:object="${book}" th:action="@{/addbook}" method="post">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Title</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" th:field="*{title}" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 control-label">Author</label>
+                <div class="col-sm-10"><input class="form-control" type="text" th:field="*{author}" /></div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Publication Year</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" th:field="*{publicationYear}" />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-10">
+                    <select class="form-select">
+                        <option value="1">Category1</option>
+                        <option value="2">Category2</option>
+                        <option value="3">Category2</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">ISBN</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" th:field="*{isbn}" />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Price</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" th:field="*{price}" />
+                </div>
+            </div>
+            <input class="btn btn-success" type="submit" value="Save Book" />
+        </form>
+        <p><a href="/index">To index page</a></p>
     </div>
-        <div class="row mb-3">
-            <label class="col-sm-2 control-label">Author</label>
-            <div class="col-sm-10"><input class="form-control" type="text" th:field="*{author}" /></div>
-        </div>
-        <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Publication Year</label>
-            <div class="col-sm-10">
-            <input class="form-control" type="text" th:field="*{publicationYear}" />
-        </div>
-        </div>
-
-        <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">ISBN</label>
-            <div class="col-sm-10">
-            <input class="form-control" type="text" th:field="*{isbn}" />
-        </div>
-        </div>
-
-        <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Price</label>
-            <div class="col-sm-10">
-            <input class="form-control" type="text" th:field="*{price}" />
-        </div>
-        </div>
-        <input class="btn btn-success" type="submit" value="Save Book" />
-    </form>
-    <p><a href="/index">To index page</a></p>
-	</div>
-</div>
+    </div>
 </body>
+
 </html>
