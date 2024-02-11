@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import k24.bookstore.domain.Book;
 import k24.bookstore.domain.BookRepository;
+import k24.bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
@@ -19,6 +20,9 @@ public class BookController {
 
     @Autowired
     private BookRepository repository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @GetMapping("/index")
     public String showIndex() {
@@ -30,6 +34,7 @@ public class BookController {
     public String showBooklist(Model model) {
         log.info("Showing book list"); // LOG
         model.addAttribute("bookList", repository.findAll());
+        model.addAttribute("categories", categoryRepository.findAll());
         log.info("Book list loaded"); // LOG
         return "booklist";
     }
