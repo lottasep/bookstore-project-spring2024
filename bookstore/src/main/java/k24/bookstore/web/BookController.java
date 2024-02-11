@@ -44,6 +44,7 @@ public class BookController {
         log.info("Navigating to add book form"); // LOG
         log.info("Create a new book..."); // LOG
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
 
