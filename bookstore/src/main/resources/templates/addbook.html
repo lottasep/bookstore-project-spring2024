@@ -8,30 +8,39 @@
 <body>
     <div class="container">
 	<h1>Add Book</h1>
-	<div>
         <form action="#" th:object="${book}" th:action="@{/addbook}"
         method="post">
-        <div>
-            <label>Title</label> <input type="text" th:field="*{title}" />
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+            <input class="form-control" type="text" th:field="*{title}" />
+        </div>
+    </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 control-label">Author</label>
+            <div class="col-sm-10"><input class="form-control" type="text" th:field="*{author}" /></div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Publication Year</label>
+            <div class="col-sm-10">
+            <input class="form-control" type="text" th:field="*{publicationYear}" />
+        </div>
         </div>
 
-        <div>
-            <label>Author</label> <input type="text" th:field="*{author}" />
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">ISBN</label>
+            <div class="col-sm-10">
+            <input class="form-control" type="text" th:field="*{isbn}" />
+        </div>
         </div>
 
-        <div>
-            <label>Publication Year</label> <input type="text" th:field="*{publicationYear}" />
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Price</label>
+            <div class="col-sm-10">
+            <input class="form-control" type="text" th:field="*{price}" />
         </div>
-
-        <div>
-            <label>ISBN</label> <input type="text" th:field="*{isbn}" />
         </div>
-
-        <div>
-            <label>Price</label> <input type="text" th:field="*{price}" />
-        </div>
-
-        <input class="btn btn-success" type="submit" value="Save Book"></input>
+        <input class="btn btn-success" type="submit" value="Save Book" />
     </form>
     <p><a href="/index">To index page</a></p>
 	</div>
