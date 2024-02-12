@@ -35,6 +35,14 @@
           </div>
 
           <div>
+            <label>Category</label>
+            <select th:field="*{category.id}">
+                <option value="">Select Category</option>
+                <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+            </select>
+          </div>
+
+          <div>
             <label>ISBN</label> <input type="text" th:field="*{isbn}" />
           </div>
 

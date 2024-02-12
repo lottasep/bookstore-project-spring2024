@@ -31,7 +31,7 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Category</label>
                 <div class="col-sm-10">
-                    <select class="form-select">
+                    <select class="form-select" th:field="*{category.id}">
                         <option value="">Select Category</option>
                         <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
                     </select>
@@ -54,7 +54,6 @@
             <input class="btn btn-success" type="submit" value="Save Book" />
         </form>
         <p><a href="/index">To index page</a></p>
-    </div>
     </div>
 </body>
 

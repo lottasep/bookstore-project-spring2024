@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import k24.bookstore.domain.Book;
 import k24.bookstore.domain.BookRepository;
+import k24.bookstore.domain.Category;
 import k24.bookstore.domain.CategoryRepository;
 
 @Controller
@@ -47,13 +49,24 @@ public class BookController {
         model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
-
+    
     @PostMapping("/addbook")
-    public String saveBook(@ModelAttribute ("book") Book book) {
+    public String saveBook(@ModelAttribute("book") Book book, @RequestParam("category") Long categoryId) {
         log.info("Saving new book: {}", book); // LOG
+        Category category = categoryRepository.findById(categoryId).orElse(null);
+        book.setCategory(category);
         repository.save(book);
-        log.info("Book saved successfully, redirecting to book list"); // LOG
         return "redirect:booklist";
+    }
+    
+
+    @PostMapping("/updatebook")
+    public String updateBook(@ModelAttribute("editBook") Book book, @RequestParam("category") Long categoryId) {
+        log.info("Updating book: {}", book); // LOG
+        Category category = categoryRepository.findById(categoryId).orElse(null);
+        book.setCategory(category);
+        repository.save(book);
+        return "redirect:/booklist";
     }
 
     @GetMapping("/delete/{id}")
@@ -68,6 +81,7 @@ public class BookController {
     @GetMapping("/edit/{id}")
     public String editBook(@PathVariable("id") Long id, Model model) {
         model.addAttribute("editBook", repository.findById(id));
+        model.addAttribute("categories", categoryRepository.findAll());
         return "editBook";
     }
 
