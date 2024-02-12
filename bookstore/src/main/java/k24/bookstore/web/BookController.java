@@ -51,14 +51,18 @@ public class BookController {
     }
     
     @PostMapping("/addbook")
-    public String saveBook(@ModelAttribute("book") Book book, @RequestParam("category") Long categoryId) {
-        log.info("Saving new book: {}", book); // LOG
-        Category category = categoryRepository.findById(categoryId).orElse(null);
-        book.setCategory(category);
+    public String saveBook(@ModelAttribute Book book,
+            @RequestParam(value = "category", required = false) Long categoryId) {
+    log.info("Saving new book: {}", book); // LOG
+        if (categoryId != null) {
+            Category category = categoryRepository.findById(categoryId).orElse(null);
+            book.setCategory(category);
+        } else {
+            book.setCategory(null);
+        }
         repository.save(book);
         return "redirect:booklist";
     }
-    
 
     @PostMapping("/updatebook")
     public String updateBook(@ModelAttribute("editBook") Book book, @RequestParam("category") Long categoryId) {
