@@ -36,7 +36,7 @@ public class BookController {
     public String showBooklist(Model model) {
         log.info("Showing book list"); // LOG
         model.addAttribute("bookList", repository.findAll());
-        model.addAttribute("categories", categoryRepository.findAll());
+       // model.addAttribute("categories", categoryRepository.findAll());
         log.info("Book list loaded"); // LOG
         return "booklist";
     }
@@ -49,11 +49,19 @@ public class BookController {
         model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
+
+    	@PostMapping("savebook")
+	public String saveBook(@ModelAttribute Book book) {
+		repository.save(book);
+		return "redirect:/booklist";
+	}
+
+    /*
     
     @PostMapping("/addbook")
     public String saveBook(@ModelAttribute Book book,
             @RequestParam(value = "category", required = false) Long categoryId) {
-    log.info("Saving new book: {}", book); // LOG
+        log.info("Saving new book: {}", book); // LOG
         if (categoryId != null) {
             Category category = categoryRepository.findById(categoryId).orElse(null);
             book.setCategory(category);
@@ -65,13 +73,20 @@ public class BookController {
     }
 
     @PostMapping("/updatebook")
-    public String updateBook(@ModelAttribute("editBook") Book book, @RequestParam("category") Long categoryId) {
+    public String updateBook(@ModelAttribute("editBook") Book book,
+            @RequestParam(value = "category", required = false) Long categoryId) {
         log.info("Updating book: {}", book); // LOG
-        Category category = categoryRepository.findById(categoryId).orElse(null);
-        book.setCategory(category);
+        if (categoryId != null) {
+            Category category = categoryRepository.findById(categoryId).orElse(null);
+            book.setCategory(category);
+        } else {
+            book.setCategory(null);
+        }
         repository.save(book);
         return "redirect:/booklist";
     }
+
+     */
 
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") Long id, Model model) {

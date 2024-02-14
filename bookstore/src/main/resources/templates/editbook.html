@@ -17,7 +17,7 @@
         <form
           action="#"
           th:object="${editBook}"
-          th:action="@{/addbook}"
+          th:action="@{/savebook}"
           method="post"
         >
           <input type="hidden" id="id" th:field="*{id}" />
@@ -36,8 +36,7 @@
 
           <div>
             <label>Category</label>
-            <select th:field="*{category.id}">
-                <option value="">Select Category</option>
+            <select th:field="*{category}">
                 <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
             </select>
           </div>

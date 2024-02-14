@@ -1,6 +1,8 @@
 package k24.bookstore.domain;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,19 +24,22 @@ public class Book {
     private BigDecimal price;
 
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     public Book() {
     }
 
-    public Book(String title, String author, int publicationYear, String isbn, BigDecimal price) {
-        this.title = title;
-        this.author = author;
-        this.publicationYear = publicationYear;
-        this.isbn = isbn;
-        this.price = price;
-    }
+    /*
+     * public Book(String title, String author, int publicationYear, String isbn,
+     * BigDecimal price) {
+     * this.title = title;
+     * this.author = author;
+     * this.publicationYear = publicationYear;
+     * this.isbn = isbn;
+     * this.price = price;
+     * }
+     */
 
     public Book(String title, String author, int publicationYear, String isbn, BigDecimal price, Category category) {
         this.title = title;
@@ -100,11 +105,35 @@ public class Book {
     public void setCategory(Category category) {
         this.category = category;
     }
-    
+
+    	public static List<String> getAllCategories(List<Book> books) {
+		List<String> categories = new ArrayList<>();
+		for (Book book : books) {
+			if (!categories.contains(book.getCategory().getName())) {
+				categories.add(book.getCategory().getName());
+			}
+		}
+		return categories;
+	}
+
+    /*
+     * @Override
+     * public String toString() {
+     * return "Book [id=" + id + ", title=" + title + ", author=" + author +
+     * ", publicationYear=" + publicationYear
+     * + ", isbn=" + isbn + ", price=" + price + "]";
+     * }
+     */
+
     @Override
     public String toString() {
-        return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
-                + ", isbn=" + isbn + ", price=" + price + "]";
+        if (this.category != null) {
+            return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
+                    + ", isbn=" + isbn + ", price=" + price + ", category=" + this.category.getName() + "]";
+        } else {
+            return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
+                    + ", isbn=" + isbn + ", price=" + price + "]";
+        }
     }
 
 }

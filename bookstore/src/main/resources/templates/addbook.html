@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>Add Book</h1>
-        <form action="#" th:object="${book}" th:action="@{/addbook}" method="post">
+        <form action="#" th:object="${book}" th:action="@{/savebook}" method="post">
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
@@ -31,8 +31,7 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Category</label>
                 <div class="col-sm-10">
-                    <select class="form-select" th:field="*{category.id}">
-                        <option value="">Select Category</option>
+                    <select class="form-select" th:field="*{category}">
                         <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
                     </select>
                 </div>
