@@ -19,31 +19,29 @@ import k24.bookstore.domain.BookRepository;
 @RestController
 public class RestBookController {
 
-    private static final Logger log = LoggerFactory.getLogger(RestBookController.class);
+    private static final Logger log = LoggerFactory.getLogger(RestBookController.class); // LOG
 
     @Autowired
     private BookRepository repository;
 
-    // Hae kaikki kirjat, tapa 1
+    // Fetch all books #1
     @RequestMapping(value="/allbooks", method = RequestMethod.GET)
     public @ResponseBody List<Book> bookListRest() {
-        log.info("get and return books");
+        log.info("get and return all books"); // LOG
         return (List<Book>) repository.findAll();
     }
 
-    // Hae kaikki kirjat, tapa 2
+    // Fetch all books #2
     @GetMapping("/books")
 	public Iterable<Book> getBooks() {
-		log.info("get and return books");
+		log.info("get and return all books"); // LOG
 		return repository.findAll();
 	}
 
     @GetMapping("/book/{id}")
 	public Optional<Book> getBookById(@PathVariable("id") Long id) {
-		log.info("get and return book with id: " + id);
+		log.info("get and return book with id: " + id); // LOG
 		return repository.findById(id);
 	}
-
-
 
 }
