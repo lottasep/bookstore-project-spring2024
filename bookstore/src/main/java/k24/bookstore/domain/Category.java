@@ -50,9 +50,11 @@ public class Category {
         this.books = books;
     }
 
+    // kannattaa tulostaa vaan luokan omat attribuutit (eli ei mukaan joinin takana olevia tietoja, books, silloin
+    // pitäisi tehdä transaktiometodi eli ei return "Category [id=" + id + ", name=" + name + ", books=" + books + "]";)
     @Override
     public String toString() {
-        return "Category [id=" + id + ", name=" + name + ", books=" + books + "]";
+        return "Category [id=" + id + ", name=" + name + "]";
     }
 
     
