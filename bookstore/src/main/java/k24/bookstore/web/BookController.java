@@ -3,6 +3,7 @@ package k24.bookstore.web;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,6 +44,7 @@ public class BookController {
         return "booklist";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/addbook")
     public String addBook(Model model) {
         log.info("Navigating to add book form"); // LOG
@@ -52,6 +54,7 @@ public class BookController {
         return "addbook";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("savebook")
 	public String saveBook(@Valid @ModelAttribute("book") Book book, BindingResult result, Model model) {
         log.info("CONTROLLER: Save the book - Check validation of book: " + book);
@@ -96,6 +99,7 @@ public class BookController {
 
      */
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") Long id, Model model) {
         log.info("Attempting to delete book with id: {}", id); // LOG
@@ -105,6 +109,7 @@ public class BookController {
         return "redirect:/booklist";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/edit/{id}")
     public String editBook(@PathVariable("id") Long id, Model model) {
         model.addAttribute("editBook", repository.findById(id));
