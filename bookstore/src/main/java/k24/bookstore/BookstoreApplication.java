@@ -37,8 +37,8 @@ public class BookstoreApplication {
             repository.save(new Book("Python Crash Course", "Eric Matthes", 2023, "9781718502703", BigDecimal.valueOf(42.00), computerCategory));
             repository.save(new Book("The Very Hungry Caterpillar", "Eric Carle", 1994, "9780241003008", BigDecimal.valueOf(27.40), childernsCategory));
 
-            AppUser user1 = new AppUser("user", "$2a$10$sV2YPS4yA/7XKnJBFnLr.ud9uTCbQfMAtiFSEk18BZj90tWIletJy", "USER");
-            AppUser user2 = new AppUser("admin", "$2a$10$MbnEy2V1tDaQ6k4zL8vUUuYIiXt8r5OP3ElbLQlF1Or3FfUSA93CW", "ADMIN");
+            AppUser user1 = new AppUser("user", "$2a$10$uUNZ83T2mkf2L.BSXkf46ecjr65FcK2BjeqgT1.NBmkif3HIAduIO", "USER");
+            AppUser user2 = new AppUser("admin", "$2a$10$eap95poMOzHCM56hl5rF1OLbWBGIIG76nPf3tYP6JpxVNO52dZn/a", "ADMIN");
             userRepository.save(user1);
             userRepository.save(user2);
             

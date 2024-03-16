@@ -1,4 +1,4 @@
-package k24.bookstore.service;
+package k24.bookstore.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
