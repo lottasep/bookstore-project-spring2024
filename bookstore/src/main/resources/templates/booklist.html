@@ -7,10 +7,16 @@
   </head>
   <body>
     <div class="container">
-        <div>Logged in as <span sec:authentication="name"></span></div>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Log Out"/>
-        </form>
+        <div class="row">
+            <div class="col-6 text-start">
+                <div>Logged in as <strong><span sec:authentication="name"></span></strong></div>
+            </div>
+            <div class="col-6 text-end">
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Log Out" class="btn btn-primary"/>
+                </form>
+            </div>
+        </div>
     <h1>Book List</h1>
     <table class="table table-striped">
       <thead>
