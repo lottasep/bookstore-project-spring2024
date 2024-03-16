@@ -39,16 +39,16 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
           <!--<td th:text="${book.category != null ? book.category.name : 'N/A'}"></td>-->
           <td th:text="${book.isbn}"></td>
           <td th:text="${book.price}"></td>
-          <td>
+          <td sec:authorize="hasAuthority('ADMIN')">
             <a class="btn btn-danger" th:href="@{/delete/{id}(id=${book.id})}">Delete</a>
           </td>
-          <td>
+          <td sec:authorize="hasAuthority('ADMIN')">
             <a class="btn btn-warning" th:href="@{/edit/{id}(id=${book.id})}">Edit</a>
           </td>
         </tr>
       </tbody>
     </table>
-    <p><a class="btn btn-success btn-lg" href="/addbook">Add a new book</a></p>
+    <p sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-success btn-lg" href="/addbook">Add a new book</a></p>
     <p><a href="/index">To index page</a></p>
 </div>
   </body>
